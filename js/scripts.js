@@ -33,8 +33,18 @@ $(document).ready(function() {
     var inputNotes = $("input#notes").val();
     var newPlace = new Place(inputName, inputLocation, [inputLandmark1, inputLandmark2, inputLandmark3], inputTime, inputNotes);
 
-      $("#places").append('<div class="well title">' + '<h3>' + newPlace.name + '</h3>' + '</div>' + '<div class="well content">' +'<ul>' + '<li>' + newPlace.name + ', ' + newPlace.location + '</li>' + '<li>Landmarks: ' + newPlace.landmarks + '</li>' + '<li>Time of Year ' + newPlace.timeOfYear + '</li>' + '<li>Notes: ' + newPlace.notes + '</li>' + '</ul>');
+    $("#places").append('<div class="well">' + '<h3 class="title">' + newPlace.name + '</h3>' +'<ul class="content">' + '<li>' + newPlace.name + ', ' + newPlace.location + '</li>' + '<li>Landmarks: ' + newPlace.landmarks + '</li>' + '<li>Time of Year ' + newPlace.timeOfYear + '</li>' + '<li>Notes: ' + newPlace.notes + '</li>' + '</ul>');
+
+    $(".title").click(function(){
+      $(this).hide("fast")
+      $(this).next().show("fast")
+    })
+    $(".content").click(function(){
+      $(this).hide("fast")
+      $(this).prev().show("fast")
+    })
 
     resetFields();
   });
+
 });
